@@ -135,12 +135,12 @@ GAME CARDS
 }
 
 .arrow.up {
-  background-image: url("/images/icons/ArrowLeft.png");
+  background-image: url("../images/icons/ArrowLeft.png");
   transform: rotate(90deg);
 }
 
 .arrow.down {
-  background-image: url("/images/icons/ArrowRight.png");
+  background-image: url("../images/icons/ArrowRight.png");
   transform: rotate(90deg);
 }
 
