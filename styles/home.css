@@ -1366,7 +1366,7 @@ grid-template-columns:1fr;
 /* titulo vieojuegos */
 .videogames-section {
   padding: 5px 0px;
-   background-image: url("/images/backgrounds/webtexture2.png");
+   background-image: url("../images/backgrounds/webtexture2.png");
   background-repeat: no-repeat, repeat;
   border-style:solid;
   border-width: 1px;
