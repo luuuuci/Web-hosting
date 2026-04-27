@@ -1,0 +1,465 @@
+/* ========================================
+   GAMES SECTION
+======================================== */
+
+.games-section {
+  background: #cfc0ff;
+  padding: 30px;
+  height: 90vh;
+  box-sizing: border-box;
+  
+}
+
+/* ========================================
+   MAIN LAYOUT
+======================================== */
+
+.games-layout {
+  
+
+  width: 100%;
+  height: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  
+}
+
+/* ========================================
+   LEFT SIDE - VERTICAL CAROUSEL
+======================================== */
+
+.carousel-side {
+  width: 190px;
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vertical-carousel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0px;
+}
+
+.carousel-window {
+  width: 160px;
+  height: 410px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ========================================
+GAME CARDS
+======================================== */
+
+.game-card {
+  width: 120px;
+  height: 120px;
+  border-radius: 22px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  cursor: pointer;
+  background: #ff5b8d;
+
+  opacity: 0.35;
+  transform: translateX(-50%) scale(0.78);
+  filter: brightness(0.9);
+  transition: all 0.4s ease;
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-card.top {
+  top: 0px;
+  opacity: 0.65;
+  transform: translateX(-50%) scale(0.82);
+  z-index: 2;
+}
+
+.game-card.center {
+  top: 130px;
+  width: 150px;
+  height: 150px;
+  transform: translateX(-50%) scale(1.08);
+  opacity: 1;
+  filter: brightness(1);
+  z-index: 5;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+}
+
+.game-card.bottom {
+  top: 290px;
+  opacity: 0.65;
+  transform: translateX(-50%) scale(0.82);
+  z-index: 2;
+}
+
+.game-card.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ========================================
+   ARROWS
+======================================== */
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s ease;
+}
+
+.arrow.up {
+  background-image: url("/images/icons/ArrowLeft.png");
+  transform: rotate(90deg);
+}
+
+.arrow.down {
+  background-image: url("/images/icons/ArrowRight.png");
+  transform: rotate(90deg);
+}
+
+.arrow:hover {
+  opacity: 0.7;
+  transform: rotate(90deg) scale(1.05);
+}
+
+/* ========================================
+   RIGHT SIDE
+======================================== */
+
+.content-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+/* ========================================
+   TOP AREA
+======================================== */
+
+.top-content {
+  flex: 0.3;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+
+  
+  align-items: stretch;
+}
+
+/* ========================================
+   PROFESSIONAL CARD STYLE
+======================================== */
+
+.middle,
+.game-trailer,
+.game-info {
+  padding: 20px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* ========================================
+   DESCRIPTION CARD
+======================================== */
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ========================================
+   TRAILER 
+======================================== */
+
+.game-trailer {
+  padding: 0;
+  overflow: hidden;
+
+  display: flex;
+  align-items: stretch;
+}
+
+
+#trailer {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  border-radius: 24px;
+
+  object-fit: cover;
+}
+
+/* ========================================
+   TEXT
+======================================== */
+
+#game-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #111;
+  line-height: 1.2;
+}
+
+#features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#features li {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  color: #111;
+  margin-left: 20px;
+}
+
+.highlight {
+  font-weight: 700;
+}
+
+.link-wrapper {
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+#link a {
+  display: inline-block;
+  padding: 11px 22px;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+#link a:hover {
+  opacity: 0.85;
+}
+
+/* ========================================
+   CONTRIBUTIONS
+======================================== */
+
+.game-info {
+  flex: none;
+}
+
+.game-info h3 {
+  font-size: 24px;
+  margin: 0 0 18px 0;
+  color: #111;
+  font-weight: 700;
+}
+
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#tags span {
+  padding: 7px 14px;
+  border-radius: 999px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#contributions {
+  margin: 0;
+  padding-left: 9px;
+  font-size: 15px;
+}
+
+#contributions li {
+  font-size: 16x;
+  margin-bottom: 12px;
+  margin-top: 10px;
+  color: #111;
+  list-style: none;
+  position: relative;
+  padding-left: 24px;
+}
+
+#contributions li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("/images/icons/AboutMeIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#contributions2 {
+  margin: 0;
+  padding-left: 9px;
+}
+
+#contributions2 li {
+  font-size: 15px;
+  margin-bottom: 12px;
+  margin-top: 10px;
+  color: #111;
+  list-style: none;
+  position: relative;
+  padding-left: 24px;
+}
+
+#contributions2 li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background-image: url("/images/icons/AboutMeIcon.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.game-contributions {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.game-contributions > div {
+  flex: 1;
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+.anim {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.25s ease;
+}
+
+.anim.hide {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1100px) {
+  .games-layout {
+    flex-direction: column;
+  }
+
+  .carousel-side {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .vertical-carousel {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .carousel-window {
+    width: 520px;
+    height: 160px;
+  }
+
+  .game-card {
+    top: 50%;
+    left: auto;
+    transform: translateY(-50%);
+  }
+
+  .game-card.top {
+    top: 50%;
+    left: 0;
+  }
+
+  .game-card.center {
+    top: 50%;
+    left: 190px;
+    transform: translateY(-50%) scale(1);
+  }
+
+  .game-card.bottom {
+    top: 50%;
+    left: 380px;
+  }
+
+  .top-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .games-section {
+    padding: 20px 16px;
+  }
+
+  .middle,
+  .game-info {
+    padding: 22px;
+  }
+
+  #game-title,
+  .game-info h3 {
+    font-size: 24px;
+  }
+
+  #trailer {
+    min-height: 240px;
+  }
+}

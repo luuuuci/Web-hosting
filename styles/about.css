@@ -1,0 +1,245 @@
+
+:root {
+  --bg: rgb(253,249,255);
+  --card: rgb(253,249,255);
+  --accent: rgb(255,213,39);
+  --text: rgb(38,26,28);
+
+
+--text-50: #e5ecff;
+--text-100: #ccd9ff;
+--text-200: #99b3ff;
+--text-300: #668cff;
+--text-400: #3366ff;
+--text-500: #0040ff;
+--text-600: #0033cc;
+--text-700: #002699;
+--text-800: #001966;
+--text-900: #000d33;
+--text-950: #00061a;
+
+--background-50: #e5ebff;
+--background-100: #ccd6ff;
+--background-200: #99adff;
+--background-300: #6685ff;
+--background-400: #335cff;
+--background-500: #0033ff;
+--background-600: #0029cc;
+--background-700: #001f99;
+--background-800: #001466;
+--background-900: #000a33;
+--background-950: #00051a;
+
+--primary-50: #e6ecff;
+--primary-100: #cdd8fe;
+--primary-200: #9ab1fe;
+--primary-300: #688bfd;
+--primary-400: #3564fd;
+--primary-500: #033dfc;
+--primary-600: #0231ca;
+--primary-700: #022597;
+--primary-800: #011865;
+--primary-900: #010c32;
+--primary-950: #000619;
+
+--secondary-50: #fbe6ff;
+--secondary-100: #f7cdfe;
+--secondary-200: #ef9afe;
+--secondary-300: #e768fd;
+--secondary-400: #df35fd;
+--secondary-500: #d703fc;
+--secondary-600: #ac02ca;
+--secondary-700: #810297;
+--secondary-800: #560165;
+--secondary-900: #2b0132;
+--secondary-950: #150019;
+
+--accent-50: #ffe6f9;
+--accent-100: #ffccf2;
+--accent-200: #fe9ae5;
+--accent-300: #fe67d8;
+--accent-400: #fe34cb;
+--accent-500: #fe01bf;
+--accent-600: #cb0198;
+--accent-700: #980172;
+--accent-800: #65014c;
+--accent-900: #330026;
+--accent-950: #190013;
+
+
+--accent2-50: #fffde6;
+--accent2-100: #fffecc;
+--accent2-200: #fefe9a;
+--accent2-300: #fefe67;
+--accent2-400: #feed34;
+--accent2-500: #fef601;
+--accent2-600: #cbc801;
+--accent2-700: #909801;
+--accent2-800: #655b01;
+--accent2-900: #333100;
+--accent2-950: #191900;
+
+
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: rgb(253,249,255);
+  color: var(--text);
+  height: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+ 
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 20px;
+  border-color: rgb(1,1,29);
+  border-width: 20px;
+  border-style:double;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: fadeIn 0.5s ease;
+  margin-top: 20vh;
+  height: 100%;
+}
+
+.hidden { display: none; }
+
+button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: rgb(12, 1, 1);
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.answer {
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.answer:hover {
+  transform: scale(1.05);
+}
+
+.answer:nth-child(1) { background: #fe34cb;; color:#150019; }
+.answer:nth-child(2) { background: #fe34cb;; color:#150019; }
+.answer:nth-child(3) { background: #fe34cb;; color:#150019; }
+.answer:nth-child(4) { background: #fe34cb; color:#150019; }
+
+img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+#about {
+  margin-top: 40px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .answers {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.container-info {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .card-info {
+    display: flex;
+    gap: 20px;
+    background: #9e9e9e;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    align-items: flex-start;
+  }
+
+  .icon-info {
+    width: 70px;
+    height: 70px;
+    background: #555;
+    flex-shrink: 0;
+  }
+
+  .content-info {
+    flex: 1;
+  }
+
+  .title-info {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  .line-info {
+    height: 2px;
+    background: black;
+    margin: 10px 0 15px;
+    width: 100%;
+  }
+
+  .text-info {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .icon-info {
+      width: 50px;
+      height: 50px;
+    }
+
+    .title-info {
+      font-size: 1.5rem;
+    }
+  }
+
+
+
+
+

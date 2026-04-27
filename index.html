@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+
+
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/home-projects.css">
+  
+  <link rel="stylesheet" href="../styles/videogame.css">
+  <link rel="stylesheet" href="../styles/design.css">
+  
+
+
+<script src="script/script.js"></script>
+  <script src="script/scriptbutton.js"></script>
+
+
+  
+</head>
+<body>
+  
+
+<div class="header">
+    <div class="left-section">
+      <a href="index.html"><img class="home-image" src="images/icons/WebLogo.png"></a>
+    </div>
+    <div class="right-section">
+      <a class="link-header" href="#home-header">Home</a>
+      <a class="link-header" href="#about-header">About Me</a>
+      <a class="link-header" href="#videogames-header">Videogames</a>
+      <a class="link-header" href="#design-header">Design</a>
+      <a class="link-header" href="#contact-header">Contact</a>
+
+      <div class="nav-indicator"></div>
+    </div>
+
+  </div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const sections = document.querySelectorAll("section[id]");
+  const links = document.querySelectorAll(".link-header");
+  const indicator = document.querySelector(".nav-indicator");
+
+  if (!indicator || links.length === 0) return;
+
+  // 🔥 Mueve el indicador a un link
+  function moveIndicator(el) {
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    const parentRect = el.parentElement.getBoundingClientRect();
+
+    indicator.style.width = rect.width + "px";
+    indicator.style.transform =
+      `translateX(${rect.left - parentRect.left}px)`;
+  }
+
+  // 🔥 IntersectionObserver para cambiar sección activa
+  const observer = new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const id = entry.target.id;
+
+        const activeLink = document.querySelector(
+          `.link-header[href="#${id}"]`
+        );
+
+        if (activeLink) {
+          moveIndicator(activeLink);
+        }
+      });
+
+    },
+    {
+      threshold: 0.4,
+      rootMargin: "-80px 0px -40% 0px"
+    }
+  );
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // 🔥 Click suave + mover indicador
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+
+      // (opcional) scroll suave ya lo hace CSS
+      // evitamos salto raro del observer
+      setTimeout(() => {
+        moveIndicator(link);
+      }, 50);
+
+    });
+  });
+
+  // 🔥 posicion inicial (cuando carga la página)
+  window.addEventListener("load", () => {
+    const firstLink = document.querySelector(".link-header");
+    moveIndicator(firstLink);
+  });
+
+});
+</script>
+
+
+
+
+<div class="intro-home">
+
+
+<section id="home-header" class="hero">
+
+<div class="who-title">
+
+<span class="letter w">W</span>
+<span class="letter h">h</span>
+<span class="letter o">o</span>
+<span class="letter ospace">o</span>
+
+<span class="letter a">A</span>
+<span class="letter m">m</span>
+<span class="letter ospace">o</span>
+
+<span class="letter i">I</span>
+<span class="letter q">?</span>
+
+
+
+</div>
+
+
+
+</section>
+
+<div class="intro-div">
+     
+      <div class="text-intro-div">
+        I ask that myself every morning xd
+      </div>
+
+    </div>
+
+</div>
+
+  
+  <div class="content">
+
+    
+    
+   
+    
+    
+
+    <section id="about-header" class="videogames-section">
+  <div class="videogames-section-div">
+    <h2 class="videogames-title">About me</h2>
+  </div>
+  
+</section>
+<section class="about-person">
+
+  <div class="about-container">
+
+    <!-- LEFT IMAGE -->
+    <div class="about-image">
+      <img src="images/imgs/ProfilePhoto001.png" alt="Profile image">
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="about-text">
+
+      <div class="about-title">
+        <h2>Nice to meet you!</h2>
+      </div>
+
+      <div class="about-description">
+        <p>
+          I’m a graphic designer and videogame creator passionate about building immersive visual experiences that blend art and interactivity. From crafting bold visual identities to designing engaging game worlds, my work focuses on storytelling, creativity, and user impact. I enjoy turning ideas into compelling designs and playable experiences that connect with people and leave a lasting impression.
+           
+        </p>
+      </div>
+
+      <div class="about-traits">
+
+        <div class="trait">Creative</div>
+        <div class="trait">Curious</div>
+        <div class="trait">Collaborative</div>
+        <div class="trait">Problem Solver</div>
+
+      </div>
+
+    </div>
+
+    <div class="about-tools">
+ <div class="about-title-tools">
+        <h3>Tools</h3>
+      </div>
+     <!-- DERECHA -->
+    <div class="div-tools">
+
+
+      <div class="column-tools" data-dir="down-tools">
+        <div class="track-tools">
+          <img src="images/icons/tool1.png">
+          <img src="images/icons/tool2.png">
+          <img src="images/icons/tool3.png">
+          <img src="images/icons/tool4.png">
+          <img src="images/icons/tool5.png">
+          <img src="images/icons/tool6.png">
+          <img src="images/icons/tool7.png">
+          <img src="images/icons/tool8.png">
+        </div>
+      </div>
+
+
+
+    </div>
+
+    </div>
+
+
+
+  </div>
+
+
+  <script>
+   const columnsTools = document.querySelectorAll(".column-tools");
+
+
+columnsTools.forEach((col) => {
+  const track = col.querySelector(".track-tools");
+
+
+  // 🔁 DUPLICAMOS 3 VECES (clave para eliminar salto)
+  track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
+
+
+  let y = -track.scrollHeight / 3; // empezamos en el bloque central
+  let isHover = false;
+
+
+  const direction = col.dataset.dir === "up-tools" ? -1 : 1;
+  const speed = 0.4;
+
+
+  const totalHeight = () => track.scrollHeight / 3;
+
+
+  col.addEventListener("mouseenter", () => {
+    isHover = true;
+    col.classList.add("active");
+  });
+
+
+  col.addEventListener("mouseleave", () => {
+    isHover = false;
+    col.classList.remove("active");
+  });
+
+
+  col.addEventListener("wheel", (e) => {
+    if (isHover) {
+      e.preventDefault();
+      y += e.deltaY * 0.5;
+    }
+  });
+
+
+  function update() {
+    const h = totalHeight();
+
+
+    // auto scroll
+    if (!isHover) {
+      y += speed * direction;
+    }
+
+
+    // 🔥 NORMALIZACIÓN INVISIBLE (NO SALTO)
+    if (y <= -2 * h) y += h;
+    if (y >= -h) y -= h;
+
+
+    track.style.transform = `translateY(${y}px)`;
+
+
+    requestAnimationFrame(update);
+  }
+
+
+  update();
+});
+</script>
+
+</section>
+
+
+
+  <!-- tools  -->
+  <!-- <section class="tools-section">
+
+    <div class="tools-header">
+      <h2>Tools</h2>
+    </div>
+
+    <div class="tools-grid">
+
+      <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool1.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="90"></div>
+          </div>
+
+          <span class="percentage">90%</span>
+
+        </div>
+
+      </div>
+
+      <div class="tool">
+
+        <div class="tool-icon">
+        <img src="images/icons/tool2.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="85"></div>
+          </div>
+
+          <span class="percentage">85%</span>
+
+        </div>
+
+      </div>
+
+       <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool3.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="60"></div>
+          </div>
+
+          <span class="percentage">60%</span>
+
+        </div>
+
+      </div>
+     
+
+      <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool4.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="80"></div>
+          </div>
+
+          <span class="percentage">80%</span>
+
+        </div>
+
+      </div>
+
+      <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool5.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="90"></div>
+          </div>
+
+          <span class="percentage">90%</span>
+
+        </div>
+
+      </div>
+
+      <div class="tool">
+
+        <div class="tool-icon">
+        <img src="images/icons/tool6.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="85"></div>
+          </div>
+
+          <span class="percentage">85%</span>
+
+        </div>
+
+      </div>
+   <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool7.jpg">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="70"></div>
+          </div>
+
+          <span class="percentage">70%</span>
+
+        </div>
+
+      </div>
+      <div class="tool">
+
+        <div class="tool-icon">
+          <img src="images/icons/tool8.png">
+        </div>
+
+        <div class="progress-wrapper">
+
+          <div class="progress-bar">
+            <div class="progress" data-value="75"></div>
+          </div>
+
+          <span class="percentage">75%</span>
+
+        </div>
+
+      </div>
+
+        
+
+    </div>
+
+  </section> -->
+
+  
+
+  </section>
+
+ <div class="contenedor-scroll">
+  <div class="scroll">
+
+    <div class="lista">
+      <span>Designer</span>
+      <span>Producer</span>
+      <span>Animator</span>
+      <span>Gamer</span>
+    </div>
+
+    <div class="lista">
+      <span>Developer</span>
+      <span>Creator</span>
+      <span>Baker</span>
+      <span>Teacher</span>
+    </div>
+
+    <div class="lista">
+      <span>Designer</span>
+      <span>Terrenaitor</span>
+      <span>Animator</span>
+      <span>Manager</span>
+    </div>
+
+  </div>
+    </div>
+
+
+<div class="tabs-section-expsection-container">
+<section class="tabs-section-expsection">
+  <div class="tabs-header-expsection">
+  <div class="tab-indicator-expsection"></div>
+
+  <div class="tab-expsection side-expsection" id="leftTab-expsection"></div>
+
+  <div class="tab-expsection center-expsection" id="centerTab-expsection">
+    <span id="mainText-expsection"></span>
+  </div>
+
+  <div class="tab-expsection side-expsection" id="rightTab-expsection"></div>
+</div>
+
+  <div class="tabs-content-expsection">
+    <!-- EXPERIENCIA -->
+    <div class="content-expsection" id="experience-expsection">
+      <div class="card-container-expsection">
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>Videogame developer</h2>
+            <p class="date">April 2024 – Present</p>
+            <a class="company" href="https://www.artaxgames.com/" target="_blank">Artax Games</a>
+            <div class="subcontent">
+              <div class="subdot"></div>
+                <p class="rol">Producer</p>
+            </div>
+            <div class="subcontent">
+              <div class="subdot"></div>
+                <p class="rol">Level Designer</p>
+            </div>
+            <div class="subcontent">
+              <div class="subdot"></div>
+                <p class="rol">QA Asistant</p>
+            </div>
+            
+
+            </div>
+
+              
+          </div>
+        </div>
+
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>Social Media Manager</h2>
+            <p class="date">September 2020 – June 2021</p>
+            <a class="company" href="https://www.upv.es/entidades/etsigct/" target="_blank">ETSIGCT (UPV)</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDUCACION -->
+    <div class="content-expsection" id="education-expsection">
+      <div class="card-container-expsection">
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>Videogame Design Master</h2>
+            <p class="date">September 2023 – July 2024</p>
+            <a class="company" href="https://www.videojuegos-ucm.es/" target="_blank">Universidad Complutense Madrid (UCM)</a>
+            </div>
+            </div>
+          </div>
+      
+          <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>Design and Creative Technoligies degree</h2>
+            <p class="date">September 2019 – July 2023</p>
+            <a class="company" href="https://www.upv.es/titulaciones/GDTC/indexc.html" target="_blank">Universidad Politécnica Valencia (UPV)</a>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        
+      </div>
+
+      <!-- IDIOMAS -->
+    <div class="content-expsection" id="languages-expsection">
+      <div class="card-container-expsection">
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>Spanish</h2>
+            <p class="date">La Rioja´s accent</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>English</h2>
+            <p class="date">C1 Level Cambridge Certificate</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-expsection">
+          <div class="item">
+            <div class="dot"></div>
+            <div class="content">
+            <h2>French</h2>
+            <p class="date">A2 Level DELF Certificate </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+
+    
+    
+  </div>
+</section>
+</div>
+
+
+
+
+
+<section id="videogames-header" class="videogames-section">
+  <div class="videogames-section-div">
+    <h2 class="videogames-title">Videogames</h2>
+  </div>
+  
+</section>
+
+
+<!-- =========================
+HTML
+========================= -->
+
+<section class="games-section">
+
+  <div class="games-layout">
+
+    <!-- LEFT SIDE - VERTICAL CAROUSEL -->
+    <div class="carousel-side">
+
+      
+
+      <div class="vertical-carousel">
+
+        <button class="arrow up">❮</button>
+
+        <div class="carousel-window">
+          <div class="carousel-track">
+
+            <div class="game-card" data-game="game1">
+              <img src="../images/icons/dora.jpg" alt="">
+            </div>
+
+            <div class="game-card" data-game="game2">
+              <img src="../images/icons/bluey.jpg" alt="">
+            </div>
+
+            <div class="game-card" data-game="game3">
+              <img src="../images/icons/doba.jpg" alt="">
+            </div>
+
+            <div class="game-card" data-game="game4">
+              <img src="../images/icons/nipa.png" alt="">
+            </div>
+
+            <div class="game-card" data-game="game5">
+              <img src="../images/icons/vs.png" alt="">
+            </div>
+
+            <div class="game-card" data-game="game6">
+              <img src="../images/imgs/JamsGames.png" alt="">
+            </div>
+
+          </div>
+        </div>
+
+        <button class="arrow down">❯</button>
+
+      </div>
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="content-side">
+
+      <!-- TOP -->
+      <div class="top-content">
+
+        <!-- DESCRIPTION -->
+        <div class="game-description anim middle">
+          <h2 id="game-title"></h2>
+
+          <ul id="features"></ul>
+
+          <div class="link-wrapper">
+            <div id="link"></div>
+          </div>
+        </div>
+
+        <!-- TRAILER -->
+        <div class="game-trailer anim">
+          <iframe
+            id="trailer"
+            src=""
+            allowfullscreen>
+          </iframe>
+        </div>
+
+      </div>
+
+      <!-- BOTTOM -->
+      <div class="game-contributions anim game-info">
+        <div>
+          <h3>Contributions</h3>
+
+        <div id="tags"></div>
+
+        <ul id="contributions"></ul>
+        </div>
+
+        <div>
+        <ul id="contributions2"></ul>   
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+/* =========================
+DATA
+========================= */
+
+const games = {
+  game1:{
+title:"Dora: Rainforest Rescue",
+video:"https://www.youtube.com/embed/QS3oRC4XO6k?si=kv9d-yV5i-uIt3cb",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/3273550/Dora_Rescate_en_el_Bosque_Tropical/"},
+],
+tags:[
+{ text:"Producer", color:"#7c4dff" },
+{ text:"Level Designer", color:"#ff5d90" }
+],
+features:["<span class='highlight'>Studio:</span> Artax Games","<span class='highlight'>Genre</span>: Platforms, Puzzles","<span class='highlight'>Platforms:</span> Steam, Switch, PS4/PS5, XboxOne/Series","<span class='highlight'>Project Length:</span> 1 year 9 months"],
+contrib:["Coordinated development tasks and timelines to keep production on track.",
+"Track progress and ensure deliverables meet quality standards."],
+contrib2:["Oversee project scope, budget, and resource allocation.",
+"Manage production schedules and ensure milestones are met on time.",
+"Design engaging and balanced game levels that support core gameplay mechanics.",
+"Prototype and iterate on levels based on playtesting feedback.",
+"Tune difficulty to ensure a fair and enjoyable player experience."]
+},
+
+game2:{
+title:"Bluey The Videogame",
+video:"https://www.youtube.com/embed/bz6pjkGopfI?si=kghSSwDUtoDU4aar",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/2078350/Bluey_El_Videojuego/"},
+],
+tags:[
+{ text:"QA", color:"#4d7fff" }
+],
+features:["<span class='highlight'>Studio:</span> Artax Games","<span class='highlight'>Genre:</span> Adventures, Puzzles","<span class='highlight'>Platforms:</span> Steam, Switch, PS4/PS5, XboxOne/Series","<span class='highlight'>Project Length:</span> 9 months"],
+contrib:["Identified, documented, and tracked bugs using issue-tracking tools, providing clear reproduction steps, screenshots, and video evidence for developers.",
+"Tested game mechanics, controls, UI/UX, audio, and visual elements to maintain consistency, immersion, and player satisfaction."],
+contrib2:["Ensure stability and performance across multiple platforms.",
+"Perform regression testing to confirm new features don’t break existing functionality.",
+"Document issues and collaborate with developers to resolve them."]
+},
+
+game3:{
+title:"DOBA",
+video:"https://www.youtube.com/embed/nachAS8WqJ8?si=MDgGqJvoVrQGYvrB",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/3064500/DOBA__Dogs_Battle_Arena/"},
+],
+tags:[
+{ text:"Producer", color:"#7c4dff" },
+{ text:"Level Designer", color:"#ff5d90" }
+],
+features:["<span class='highlight'>Studio:</span> Artax Games","<span class='highlight'>Genre</span>: Battle Royale, Party","<span class='highlight'>Platforms:</span> Steam","<span class='highlight'>Project Length:</span> 2 years"],
+contrib:["Identify and mitigate production risks and blockers.",
+"Support decision-making to align the game vision with business goals.."],
+contrib2:["Occasional QA support to ensure game quality.",
+"Design engaging and balanced game levels that support core gameplay mechanics.",
+"Create level layouts that guide player flow and pacing effectively.",
+"Prototype and iterate on levels based on playtesting feedback."]
+},
+
+game4:{
+title:"Nipa: Demo",
+video:"https://www.youtube.com/embed/sxPHsdK1rkY?si=PkBZ1_oNnyp8FRTP",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/2984180/NIPA/"},
+],
+tags:[
+{ text:"Gameplay Designer", color:"#4CAF50" },
+{ text:"Level Designer", color:"#ff5d90" }
+],
+features:["<span class='highlight'>Studio:</span> Shy Ghost Studio","<span class='highlight'>Genre:</span> Action, Puzzles","<span class='highlight'>Platforms:</span> Steam","<span class='highlight'>Project Length:</span> 9 months"],
+contrib:["Maintained clear documentation for design decisions and production processes.",
+"Design and refine core gameplay mechanics to ensure engaging player experiences."],
+contrib2:["Prototype new gameplay features and iterate based on testing feedback.",
+"Collaborate with designers, artists, and programmers to implement mechanics.",
+"Analyze player behavior data to improve gameplay loops.",
+"Define rules, controls, and systems that support the game’s vision."]
+},
+
+game5:{
+title:"Vertical Slide",
+video:"https://www.youtube.com/embed/S15ot5uhCZA?si=Wzazj4qGwQVRwGXd",
+link:[
+  {name:"Check out on Itch.io", url:"https://finitto.itch.io/vertical-slide"},
+],
+tags:[
+{ text:"Gameplay Designer", color:"#4CAF50" },
+{ text:"Artist", color:"#2196F3" }
+],
+features:["<span class='highlight'>Studio:</span> Magdaleno Games","<span class='highlight'>Genre:</span> Adventures, Cards","<span class='highlight'>Platforms:</span> PC, Web","<span class='highlight'>Project Length:</span> 9 months"],
+contrib:["Balance game systems to maintain fair and enjoyable progression.",
+"Tested game mechanics, controls, UI/UX, audio, and visual elements to maintain consistency, immersion, and player satisfaction."],
+contrib2:["Created an inmersive narrative to engage players.",
+"Design clear and visually appealing user interfaces that support gameplay.",
+"Create UI layouts, icons, and menus consistent with the game’s art style.",
+"Maintain a consistent visual style across all game assets."]
+},
+
+game6:{
+title:"Game Jams!",
+video:"https://www.youtube.com/embed/BIHacovHGko?si=rCemZ8zwQOzrYBxz",
+link:[
+  {name:"Check out on Itch.io", url:"https://merlu.itch.io/"},
+],
+tags:[
+{ text:"Whatever is needed", color:"#2196F3" }
+],
+features:["<span class='highlight'>Studio:</span> Me & Friends","<span class='highlight'>Genre:</span> Something crazy","<span class='highlight'>Platforms:</span> Itch.io","<span class='highlight'>Project Length:</span> Usually 2 days"],
+contrib:["Game jams are chaotic and fun so I have done a bit of everything.",
+"The best thing is that you can make ANYTHING and you have no restrictions (well only you have limited time as it usually is three days or a week).",
+],
+contrib2:["I think its better if you try it yourself. Go to my itch.io page and see the games that I have participated in!"]
+}
+};
+
+/* =========================
+CAROUSEL LOGIC
+========================= */
+
+const cards = Array.from(document.querySelectorAll(".game-card"));
+let current = 0;
+let isTransitioning = false;
+
+function updateCarousel() {
+  const total = cards.length;
+
+  const top = (current - 1 + total) % total;
+  const center = current;
+  const bottom = (current + 1) % total;
+
+  cards.forEach(card => {
+    card.classList.remove("top", "center", "bottom", "hidden");
+  });
+
+  cards[top].classList.add("top");
+  cards[center].classList.add("center");
+  cards[bottom].classList.add("bottom");
+
+  cards.forEach((card, i) => {
+    if (i !== top && i !== center && i !== bottom) {
+      card.classList.add("hidden");
+    }
+  });
+
+  updateGameInfo(cards[center].dataset.game);
+}
+
+function moveDown() {
+  current = (current + 1) % cards.length;
+  updateCarousel();
+}
+
+function moveUp() {
+  current = (current - 1 + cards.length) % cards.length;
+  updateCarousel();
+}
+
+document.querySelector(".arrow.down").onclick = moveDown;
+document.querySelector(".arrow.up").onclick = moveUp;
+
+/* =========================
+UPDATE INFO
+========================= */
+
+function updateGameInfo(id) {
+  if (isTransitioning) return;
+  isTransitioning = true;
+
+  const game = games[id];
+
+  if (!game) {
+  console.error("Game not found:", id);
+  isTransitioning = false;
+  return;
+}
+
+  const animatedBlocks = document.querySelectorAll(".anim");
+  animatedBlocks.forEach(el => el.classList.add("hide"));
+
+  setTimeout(() => {
+    document.getElementById("game-title").innerText = game.title;
+
+    const trailer = document.getElementById("trailer");
+    trailer.src = "about:blank";
+    setTimeout(() => {
+      trailer.src = game.video;
+    }, 80);
+
+    const features = document.getElementById("features");
+    features.innerHTML = "";
+    game.features.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = item;
+      features.appendChild(li);
+    });
+
+    const tags = document.getElementById("tags");
+    tags.innerHTML = "";
+    game.tags.forEach(tag => {
+      const span = document.createElement("span");
+      span.innerText = tag.text;
+      span.style.backgroundColor = tag.color;
+      tags.appendChild(span);
+    });
+
+    const contributions = document.getElementById("contributions");
+    contributions.innerHTML = "";
+    game.contrib.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      contributions.appendChild(li);
+    });
+
+    const contributions2 = document.getElementById("contributions2");
+    contributions2.innerHTML = "";
+    game.contrib2.forEach(item => {
+      const li = document.createElement("li");
+      li.innerText = item;
+      contributions2.appendChild(li);
+    });
+
+    const link = document.getElementById("link");
+    link.innerHTML = "";
+
+    game.link.forEach(item => {
+      const a = document.createElement("a");
+      a.href = item.url;
+      a.target = "_blank";
+      a.innerText = item.name;
+      link.appendChild(a);
+    });
+
+    requestAnimationFrame(() => {
+      animatedBlocks.forEach(el => el.classList.remove("hide"));
+
+      setTimeout(() => {
+        isTransitioning = false;
+      }, 250);
+    });
+
+  }, 220);
+}
+
+updateCarousel();
+
+</script>
+
+<section id="design-header" class="videogames-section">
+  <div class="videogames-section-div">
+    <h2 class="videogames-title">Design projects</h2>
+  </div>
+  
+</section>
+
+<section class="sub-videogames-section">
+  <div class="sub-videogames-section-div">
+    <h2 class="sub-videogames-title">Website development</h2>
+  </div>
+  
+</section>
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Ecological market</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> January 2021 - March 2021</li>
+      <li><span class="negrita">Tools:</span> Figma, Live Studio (HTML, CSS, JS)</li>
+      <li><span class="negrita">Description:</span> <br><br>Visual identity proposal for the UPV Valencia Agroecological Market, focused on creating a cohesive and modern visual system that reflects the values of sustainability, local production, and community engagement. My role in the project involved designing and developing the website, ensuring a clear, accessible, and user-friendly digital experience that communicates the market’s identity and supports its visibility and outreach.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project">
+    <div class="carousel-track-project">
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web1.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web3.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web4.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web5.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebUPV/web6.png"></div>
+    </div>
+
+    <button class="arrow-project prev-project">&#10094;</button>
+    <button class="arrow-project next-project">&#10095;</button>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Portfolio website prototipe</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> April 2021</li>
+      <li><span class="negrita">Tools:</span> Adobe XD, Live Studio (HTML, CSS, JS)</li>
+      <li><span class="negrita">Description:</span> <br><br>Personal website project designed and developed as part of my portfolio to showcase my work, skills, and creative process. The goal was to create a clean, modern, and highly visual experience that reflects my personal identity as a designer and developer.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project">
+    <div class="carousel-track-project">
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor01.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor02.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor03.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor04.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor05.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/WebPort/WebPor016.png"></div>
+    </div>
+
+    <button class="arrow-project prev-project">&#10094;</button>
+    <button class="arrow-project next-project">&#10095;</button>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+<div class="space-between">
+</div>
+
+<section class="sub-videogames-section">
+  <div class="sub-videogames-section-div">
+    <h2 class="sub-videogames-title">Branding</h2>
+  </div>
+</section>
+
+
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Oddcomes Studio</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> April 2025</li>
+      <li><span class="negrita">Tools:</span> Adobe Illustrator</li>
+      <li><span class="negrita">Description:</span> <br><br>Identity mark for a leading studio in the development of independent video games in Spain, known for being sustainable and transparent, and for creating video games for a loyal, diverse, and new audience.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project">
+    <div class="carousel-track-project">
+      <div class="slide-project"><img src="images/imgs/Design/Odd/Odd_Mesa de trabajo 1 copia 2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Odd/Odd_Mesa de trabajo 1 copia 3.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Odd/Odd_Mesa de trabajo 1 copia.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Odd//Odd_Mesa de trabajo 1.png"></div>
+      
+    </div>
+
+    <button class="arrow-project prev-project">&#10094;</button>
+    <button class="arrow-project next-project">&#10095;</button>
+  </div>
+
+</div>
+
+</section>
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Tokio records bar</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> October 2022</li>
+      <li><span class="negrita">Tools:</span> Adobe Illustrator </li>
+      <li><span class="negrita">Description:</span> <br><br>A conceptual branding proposal for an artisanal beer bar designed as a social space for informal meetings and relaxed gatherings. I developed the full visual identity system, including logo direction, color palette, typography, and graphic language, aiming to create a cohesive and recognizable brand experience across both physical and digital touchpoints.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project">
+    <div class="carousel-track-project">
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/bar1.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/bar2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/cervezas1.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/cervezas2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/cervezas3.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/stickers_Mesa de trabajo 1 copia 4.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/salvamantele1.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/salvamantele2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/PosaVasosRest.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/tarjetasRest.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/tarjetas2Rest.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/Restaurant/cartel1.png"></div>
+    </div>
+
+    <button class="arrow-project prev-project">&#10094;</button>
+    <button class="arrow-project next-project">&#10095;</button>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+</section>
+
+
+
+<div class="space-between">
+</div>
+
+<section class="sub-videogames-section">
+  <div class="sub-videogames-section-div">
+    <h2 class="sub-videogames-title">Animations</h2>
+  </div>
+</section>
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Gastroiberia intro cutscene</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> February 2023- April 2023</li>
+      <li><span class="negrita">Tools:</span> Aseprite, Adobe Premiere</li>
+      <li><span class="negrita">Description:</span> <br><br>This project is a compilation video that brings together several smaller animation experiments created to explore and develop different skills within the animation process.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project-video">
+    <div class="media-project">
+  <video controls playsinline poster="images/imgs/Design/Anims/AwelaAnimCover.png">
+    <source src="images/imgs/Design/Anims/AwelaAnim.mp4" type="video/mp4">
+  </video>
+</div>
+
+  </div>
+
+</div>
+</section>
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>The sea is not a game </h2>
+    <ul>
+      <li><span class="negrita">Date:</span> November 2021 - March 2022</li>
+      <li><span class="negrita">Tools:</span> Adobe Animate</li>
+      <li><span class="negrita">Description:</span> <br><br>This project is a short animated film created for an ocean art initiative aimed at raising awareness about marine species endangered by pollution. The goal is to highlight the fragile beauty of underwater ecosystems and the impact of human activity on ocean life.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project-video">
+    <div class="media-project">
+  <video controls playsinline poster="images/imgs/Design/Anims/ElMarCover.png">
+    <source src="images/imgs/Design/Anims/EL MAR NO ES UN JUEGO.mp4" type="video/mp4">
+  </video>
+</div>
+
+  </div>
+
+</div>
+</section>
+
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>The fly, Aesop</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> October 2023 - February 2024</li>
+      <li><span class="negrita">Tools:</span> Adobe Animate</li>
+      <li><span class="negrita">Description:</span> <br><br>This project is a short animation based on Aesop’s fable The Fly, reimagined to bring its timeless moral to a modern audience.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project-video">
+    <div class="media-project">
+  <video controls playsinline poster="images/imgs/Design/Anims/TheFlyCover.png">
+    <source src="images/imgs/Design/Anims/TheFlyAnim.mp4" type="video/mp4">
+  </video>
+</div>
+
+  </div>
+
+</div>
+</section>
+
+
+
+<div class="space-between">
+</div>
+
+<section class="sub-videogames-section">
+  <div class="sub-videogames-section-div">
+    <h2 class="sub-videogames-title">Others</h2>
+  </div>
+</section>
+
+<section class="section-project">
+  <div class="container-project">
+
+  <!-- LEFT -->
+  <div class="left-project">
+    <h2>Book covers</h2>
+    <ul>
+      <li><span class="negrita">Date:</span> April 2025</li>
+      <li><span class="negrita">Tools:</span> Adobe Illustrator</li>
+      <li><span class="negrita">Description:</span> <br><br>Identity mark for a leading studio in the development of independent video games in Spain, known for being sustainable and transparent, and for creating video games for a loyal, diverse, and new audience.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="carousel-project">
+    <div class="carousel-track-project">
+      <div class="slide-project"><img src="images/imgs/Design/BookCovers/BookCover1.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/BookCovers/BookCover2.png"></div>
+      <div class="slide-project"><img src="images/imgs/Design/BookCovers/Mockup_TuyoYMio_BookCover.png"></div>
+      
+    </div>
+
+    <button class="arrow-project prev-project">&#10094;</button>
+    <button class="arrow-project next-project">&#10095;</button>
+  </div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<section class="videogames-section">
+  <div class="videogames-section-div">
+    <h2 class="videogames-title">Contact</h2>
+  </div>
+  
+</section>
+
+<section id="contact-header" class="contact">
+
+  <div class="contact-container">
+
+    <div class="contact-left">
+      <img src="images/imgs/ContactMe.png" alt="Contact">
+    </div>
+
+    <div class="contact-right">
+
+      <h2>Contact Me</h2>
+
+      <form action="mailto:lucialopmig7@gmail.com" method="post" enctype="text/plain">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="email" name="email" placeholder="Your Email" required>
+
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <div class="social-section">
+
+    <a href="https://www.linkedin.com/in/luchi1234/" target="_blank">
+      <img src="images/icons/social1.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://merlu.itch.io/" target="_blank">
+      <img src="images/icons/social4.png" alt="Itchio">
+    </a>
+
+    <a href="mailto:lucialopmig7@gmail.com" target="_blank">
+      <img src="images/icons/email.png" alt="Email">
+    </a>
+
+  </div>
+  
+
+</section>
+
+<!-- Projects ficha script -->
+
+<script>
+document.querySelectorAll(".carousel-project").forEach(carousel => {
+
+  const track = carousel.querySelector(".carousel-track-project");
+  let slides = track.querySelectorAll(".slide-project");
+
+  const nextBtn = carousel.querySelector(".next-project");
+  const prevBtn = carousel.querySelector(".prev-project");
+
+  let index = 1;
+  let isTransitioning = false;
+
+  /* =====================
+     CLONES
+  ===================== */
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[slides.length - 1].cloneNode(true);
+
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  // refrescar slides después de clonar
+  slides = track.querySelectorAll(".slide-project");
+
+  /* =====================
+     POSICIÓN INICIAL
+  ===================== */
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  /* =====================
+     MOVIMIENTO
+  ===================== */
+  function moveToSlide() {
+    track.style.transition = "transform 0.5s ease";
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  /* =====================
+     NEXT
+  ===================== */
+  function nextSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index++;
+    moveToSlide();
+  }
+
+  /* =====================
+     PREV
+  ===================== */
+  function prevSlide() {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    index--;
+    moveToSlide();
+  }
+
+  /* =====================
+     LOOP INFINITO
+  ===================== */
+  track.addEventListener("transitionend", () => {
+    const slidesCount = slides.length;
+
+    // si llegamos al clon del final
+    if (index === slidesCount - 1) {
+      track.style.transition = "none";
+      index = 1;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // si llegamos al clon del inicio
+    if (index === 0) {
+      track.style.transition = "none";
+      index = slidesCount - 2;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    isTransitioning = false;
+  });
+
+  /* =====================
+     BOTONES
+  ===================== */
+  nextBtn.addEventListener("click", nextSlide);
+  prevBtn.addEventListener("click", prevSlide);
+
+  /* =====================
+     AUTOPLAY
+  ===================== */
+  let interval = setInterval(nextSlide, 3000);
+
+  carousel.addEventListener("mouseenter", () => clearInterval(interval));
+  carousel.addEventListener("mouseleave", () => {
+    interval = setInterval(nextSlide, 3000);
+  });
+
+  /* =====================
+     SWIPE MOBILE
+  ===================== */
+  let startX = 0;
+
+  carousel.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+
+    if (startX - endX > 50) nextSlide();
+    if (endX - startX > 50) prevSlide();
+  });
+
+});
+</script>
+
+
+<script>
+ // Seleccionamos todos los botones
+const buttons = document.querySelectorAll('.experience-button');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const box = btn.parentElement; // la caja que contiene este botón
+    const list = box.querySelector('.experience-list');
+
+    // toggle clases para este botón/caja/lista
+    btn.classList.toggle('active');
+    box.classList.toggle('active');
+    list.classList.toggle('show');
+  });
+});
+
+
+const boxes = document.querySelectorAll(".experience-box");
+
+boxes.forEach(box => {
+
+  const triggers = box.querySelectorAll(".change-img-hover");
+  const targetImg = box.querySelector(".experience-list-image img");
+
+  triggers.forEach(trigger => {
+
+    const imgSrc = trigger.getAttribute("data-img");
+
+    trigger.addEventListener("mouseenter", () => {
+      targetImg.src = imgSrc;
+    });
+
+  });
+
+});
+
+
+// =======================
+// 🔥 NUEVA LÓGICA DE TABS
+// =======================
+
+const indicator = document.querySelector(".tab-indicator-expsection");
+
+const leftTab = document.getElementById("leftTab-expsection");
+const centerTab = document.getElementById("centerTab-expsection");
+const rightTab = document.getElementById("rightTab-expsection");
+const mainText = document.getElementById("mainText-expsection");
+
+// estado activo (por defecto Experience)
+let active = "experience-expsection";
+
+if (active === "education-expsection") {
+  indicator.style.transform = "translateX(0%)";
+}
+else if (active === "experience-expsection") {
+  indicator.style.transform = "translateX(100%)";
+}
+else if (active === "languages-expsection") {
+  indicator.style.transform = "translateX(200%)";
+}
+
+function renderTabs() {
+  // textos fijos
+  leftTab.textContent = "Education";
+  mainText.textContent = "Experience";
+  rightTab.textContent = "Languages";
+
+  // contenido
+  document.querySelector(".content-expsection.active-expsection")
+    ?.classList.remove("active-expsection");
+
+  document.getElementById(active).classList.add("active-expsection");
+
+  // reset clases
+  leftTab.classList.remove("active-tab");
+  centerTab.classList.remove("active-tab");
+  rightTab.classList.remove("active-tab");
+
+  // mover indicador + activar
+  if (active === "education-expsection") {
+    leftTab.classList.add("active-tab");
+    indicator.style.transform = "translateX(0%)";
+  } 
+  else if (active === "experience-expsection") {
+    centerTab.classList.add("active-tab");
+    indicator.style.transform = "translateX(100%)";
+  } 
+  else if (active === "languages-expsection") {
+    rightTab.classList.add("active-tab");
+    indicator.style.transform = "translateX(200%)";
+  }
+}
+
+// render inicial
+renderTabs();
+
+// eventos click
+leftTab.addEventListener("click", () => {
+  active = "education-expsection";
+  renderTabs();
+});
+
+centerTab.addEventListener("click", () => {
+  active = "experience-expsection";
+  renderTabs();
+});
+
+rightTab.addEventListener("click", () => {
+  active = "languages-expsection";
+  renderTabs();
+});
+
+
+
+
+// =======================
+// PROJECTS (sin cambios)
+// =======================
+
+const columns = document.querySelectorAll(".column");
+
+columns.forEach((col) => {
+  const track = col.querySelector(".track");
+
+  // 🔁 DUPLICAMOS 3 VECES (clave para eliminar salto)
+  track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
+
+  let y = -track.scrollHeight / 3; // empezamos en el bloque central
+  let isHover = false;
+
+  const direction = col.dataset.dir === "up" ? -1 : 1;
+  const speed = 0.4;
+
+  const totalHeight = () => track.scrollHeight / 3;
+
+  col.addEventListener("mouseenter", () => {
+    isHover = true;
+    col.classList.add("active");
+  });
+
+  col.addEventListener("mouseleave", () => {
+    isHover = false;
+    col.classList.remove("active");
+  });
+
+  col.addEventListener("wheel", (e) => {
+    if (isHover) {
+      e.preventDefault();
+      y += e.deltaY * 0.5;
+    }
+  });
+
+  function update() {
+    const h = totalHeight();
+
+    // auto scroll
+    if (!isHover) {
+      y += speed * direction;
+    }
+
+    // 🔥 NORMALIZACIÓN INVISIBLE (NO SALTO)
+    if (y <= -2 * h) y += h;
+    if (y >= -h) y -= h;
+
+    track.style.transform = `translateY(${y}px)`;
+
+    requestAnimationFrame(update);
+  }
+
+  update();
+});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>

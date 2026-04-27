@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me</title>
+
+  <link rel="stylesheet" href="../styles/general.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/about.css">
+
+</head>
+<body>
+  <div class="header">
+    <div class="left-section">
+      <a href="../index.html"><img class="home-image" src="../images/icons/WebLogo.png"></a>
+    </div>
+    <div class="right-section">
+      <a class="link-header" href="../index.html">Home</a>
+      <a class="link-header" href="about.html">About Me</a>
+      <a class="link-header" href="videogames.html">Videogames</a>
+      <a class="link-header" href="design.html">Design</a>
+      <a class="link-header" href="other.html">Others</a>
+      <a class="link-header" href="contact.html">Contact</a>
+    </div>
+
+  </div>
+
+<div class="container">
+
+<div id="screen1" class="card">
+<h1>So you want to know more about me?</h1>
+<button onclick="nextScreen(2)">Next</button>
+</div>
+
+<div id="screen2" class="card hidden">
+<h1>OK, but first I need to know more about you!</h1>
+<button onclick="nextScreen(3)">Next</button>
+</div>
+
+<div id="screen3" class="card hidden">
+<h1>Quiz: What animal are you?</h1>
+<button onclick="startQuiz()">Next</button>
+</div>
+
+<div id="quiz" class="card hidden">
+<h2 id="question"></h2>
+<img id="image">
+<div class="answers" id="answers"></div>
+</div>
+
+<div id="result" class="card hidden">
+<h2 id="resultText"></h2>
+<img id="resultImg">
+<h2 id="resultText"></h2>
+<button onclick="restart()">Retry</button>
+</div>
+
+<div id="about" class="card hidden">
+  <div class="container-info">
+  <h3>Now that I know something about you, let´s talk about me!</h3>
+  <div class="card-info">
+    <div class="icon-info"></div>
+    <div class="content-info">
+      <h2 class="title-info">Reading</h2>
+      <div class="line-info"></div>
+      <p class="text-info">
+        I have always loved reading, I was that classmate that always read the book that were assigned. 
+        I enjoy reading all types of books and exploring new themes. But my favourite genre is Black Novels.
+      </p>
+    </div>
+  </div>
+
+  <div class="card-info">
+    <div class="icon-info"></div>
+    <div class="content-info">
+      <h2 class="title-info">Gaming</h2>
+      <div class="line-info"></div>
+      <p class="text-info">
+        Me gusta jugar videojuegos en mi tiempo libre. A veces paso muchas horas jugando, 
+        pero también disfruto juegos casuales. Este texto es más largo para demostrar cómo el div crece automáticamente.
+      </p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+let current = 0;
+let scores = { lion:0, dolphin:0, owl:0, dog:0, fox:0 };
+
+const questions = [
+  { text:"What's your ideal weekend?", img:"https://picsum.photos/400/200?1", answers:[
+    {t:"Leading a project", type:"lion"},
+    {t:"Hanging with friends", type:"dog"},
+    {t:"Reading or learning", type:"owl"},
+    {t:"Adventures & fun", type:"dolphin"}
+  ]},
+  { text:"Do you like roller coasters?", img:"https://picsum.photos/400/200?2", answers:[
+    {t:"It´s okey, I guess", type:"lion"},
+    {t:"Of course! Front seat. please.", type:"dog"},
+    {t:"Definetly no. Not even paying!", type:"owl"},
+    {t:"No, but mi friends make me ride them.", type:"dolphin"}
+  ]},
+  { text:"What’s your must-have drink in the morning?", img:"https://picsum.photos/400/200?3", answers:[
+    {t:"Milk", type:"lion"},
+    {t:"Water", type:"dog"},
+    {t:"An energy drink or a cup of coffee", type:"owl"},
+    {t:"Orange juice", type:"dolphin"}
+  ]},
+  { text:"What is something you can´t stand?", img:"https://picsum.photos/400/200?4", answers:[
+    {t:"People who are always late", type:"lion"},
+    {t:"People who talk during movies", type:"dog"},
+    {t:"People who chew loudly", type:"owl"},
+    {t:"People who crack their knuckles", type:"dolphin"}
+  ]},
+  { text:"Which of this pets would you like to have?", img:"https://picsum.photos/400/200?5", answers:[
+    {t:"A cat", type:"lion"},
+    {t:"A parrot, reptile or fish", type:"dog"},
+    {t:"A dog", type:"owl"},
+    {t:"A guinea pig, a bunny or a ferret", type:"dolphin"}
+  ]},
+  { text:"You won the mystery prize! You can choose from the following:", img:"https://picsum.photos/400/200?6", answers:[
+    {t:"A brown paper bag full of pennies", type:"lion"},
+    {t:"A glow-in-the-dark pickle", type:"dog"},
+    {t:"A cozy blanket with a clown on it", type:"owl"},
+    {t:"A baseball cap the size of a cat", type:"dolphin"}
+  ]},
+  { text:"What type of gesture is the most meaningful to you?", img:"https://picsum.photos/400/200?7", answers:[
+    {t:"Receiving an unsolicited compliment", type:"lion"},
+    {t:"Receiving a warm hug", type:"dog"},
+    {t:"Someone taking the time to be with me", type:"owl"},
+    {t:"Receiving a random but thoughtful gift", type:"dolphin"}
+  ]},
+  { text:"What room is insdispensable in your deam-house?", img:"https://picsum.photos/400/200?8", answers:[
+    {t:"A room where evry wall and floor are trampolines.", type:"lion"},
+    {t:"A room full oh plants that is basically a rainforest.", type:"dog"},
+    {t:"A cinema.", type:"owl"},
+    {t:"An inside pool (Slide included)", type:"dolphin"}
+  ]},
+  { text:"Someone just cut in line in front of you! What do you do?", img:"https://picsum.photos/400/200?8", answers:[
+    {t:"I politely remind them there’s a line.", type:"lion"},
+    {t:"I say nothing. It’s not worth the trouble.", type:"dog"},
+    {t:"I call them out and ask them to wait their turn.", type:"owl"},
+    {t:"I clear my throat and hope they notice.", type:"dolphin"}
+  ]},
+  { text:"What strange event would you most like to experience?", img:"https://picsum.photos/400/200?9", answers:[
+    {t:"Visit a haunted house.", type:"lion"},
+    {t:"See an UFO", type:"dog"},
+    {t:"Swap bodies with someone else", type:"owl"},
+    {t:"Meet my long-lost twin", type:"dolphin"}
+  ]},
+  { text:"Choose a silly U.S.A. law", img:"https://picsum.photos/400/200?10", answers:[
+    {t:"It is illegal to tap your feet to the rhythm of music in stores and restaurants (New Hampshire).", type:"dog"},
+    {t:"It is illegal to keep a hidden alligator in a bathtub (Arkansas).", type:"owl"},
+    {t:"It is illegal to fish with a lasso (Tennessee).", type:"dolphin"},
+    {t:"It is illegal to cover a cherry pie with ice cream (Kansas).", type:"lion"}
+  ]}
+];
+
+const animals = {
+  lion:{text:"You are a Lion 🦁 - Leader, confident and bold.", img:"https://picsum.photos/300?lion"},
+  dog:{text:"You are a Dog 🐶 - Loyal, friendly and caring.", img:"https://picsum.photos/300?dog"},
+  owl:{text:"You are an Owl 🦉 - Wise, calm and intelligent.", img:"https://picsum.photos/300?owl"},
+  dolphin:{text:"You are a Dolphin 🐬 - Playful, social and free.", img:"https://picsum.photos/300?dolphin"}
+};
+
+function nextScreen(n){
+  document.querySelectorAll('.card').forEach(e=>e.classList.add('hidden'));
+  document.getElementById('screen'+n).classList.remove('hidden');
+}
+
+function startQuiz(){
+  document.querySelectorAll('.card').forEach(e=>e.classList.add('hidden'));
+  document.getElementById('quiz').classList.remove('hidden');
+  showQuestion();
+}
+
+function showQuestion(){
+  let q=questions[current];
+  document.getElementById('question').innerText=q.text;
+  document.getElementById('image').src=q.img;
+
+  let answersDiv=document.getElementById('answers');
+  answersDiv.innerHTML='';
+
+  q.answers.forEach(a=>{
+    let div=document.createElement('div');
+    div.className='answer';
+    div.innerText=a.t;
+    div.onclick=()=>select(a.type);
+    answersDiv.appendChild(div);
+  });
+}
+
+function select(type){
+  scores[type]++;
+  current++;
+  if(current<questions.length){
+    showQuestion();
+  }else{
+    finish();
+  }
+}
+
+function finish(){
+  let winner=Object.keys(scores).reduce((a,b)=>scores[a]>scores[b]?a:b);
+
+  localStorage.setItem('animalResult', winner);
+
+  document.querySelectorAll('.card').forEach(e=>e.classList.add('hidden'));
+  document.getElementById('result').classList.remove('hidden');
+
+  document.getElementById('resultText').innerText=animals[winner].text;
+  document.getElementById('resultImg').src=animals[winner].img;
+
+  document.getElementById('about').classList.remove('hidden');
+}
+
+function restart(){
+  current=0;
+  scores={lion:0,dog:0,owl:0,dolphin:0};
+  localStorage.removeItem('animalResult');
+  nextScreen(1);
+}
+
+window.onload=()=>{
+  let saved=localStorage.getItem('animalResult');
+  if(saved && animals[saved]){
+    document.getElementById('screen1').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    document.getElementById('about').classList.remove('hidden');
+
+    document.getElementById('resultText').innerText=animals[saved].text;
+    document.getElementById('resultImg').src=animals[saved].img;
+  }
+}
+
+</script>
+
+
+
+
+
+
+
+  <script src="../script/script.js"></script>
+</body>
+</html>

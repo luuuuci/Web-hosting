@@ -1,0 +1,204 @@
+
+
+/* SECCIÓN GENERAL */
+.section-project {
+  width: 100%;
+  padding: 100px 0px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CONTAINER */
+.container-project {
+  box-sizing: border-box;
+  display: flex;
+  gap: 70px;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: center;
+  align-items: center;  
+
+  
+  padding:20px;
+  background: #ffffff;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+ 
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container-project {
+    flex-direction: column;
+  }
+}
+
+/* LEFT */
+.left-project {
+  flex: 1;
+  padding: 20px;
+}
+
+.left-project h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111;
+}
+
+.left-project ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.left-project li {
+  font-size: 14px;
+  color: #444;
+  padding-left: 10px;
+  position: relative;
+
+  text-align: justify;
+  line-height: 1.6;
+  hyphens: auto;
+}
+
+.negrita{
+  font-weight: bolder;
+}
+
+/* bullet custom */
+.left-project li::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+}
+
+/* CAROUSEL */
+.carousel-project {
+  flex: 1.2;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-right: 20px;
+  
+}
+
+.carousel-project-video {
+  flex: 1.2;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-right: 20px;
+  
+}
+
+.carousel-track-project {
+  display: flex;
+  transition: transform 0.5s ease;
+  
+}
+
+.slide-project {
+  min-width: 100%;
+  aspect-ratio: 16 / 9; /* o 4 / 3 según estilo */
+  overflow: hidden;
+  
+}
+
+.slide-project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.media-project {
+  
+  min-width: 100%;
+  aspect-ratio: 16 / 9; /* o 4 / 3 según estilo */
+  overflow: hidden;
+}
+
+
+.media-project video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ARROWS*/
+.arrow-project {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.arrow-project.prev-project {
+  left: 12px;
+}
+
+.arrow-project.next-project {
+  right: 12px;
+}
+
+/* HOVER */
+.carousel-project:hover .arrow-project {
+  opacity: 1;
+}
+
+/* MEJOR HOVER */
+.arrow-project:hover {
+  background: rgba(0,0,0,0.85);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* MOBILE: flechas siempre visibles */
+@media (max-width: 768px) {
+  .arrow-project {
+    opacity: 1;
+  }
+}

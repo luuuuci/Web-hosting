@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Videogames</title>
+
+  <link rel="stylesheet" href="../styles/general.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/videogame.css">
+
+
+</head>
+<body>
+  <div class="header">
+    <div class="left-section">
+      <a href="../index.html"><img class="home-image" src="../images/icons/WebLogo.png"></a>
+    </div>
+    <div class="right-section">
+      <a class="link-header" href="../index.html">Home</a>
+      <a class="link-header" href="about.html">About Me</a>
+      <a class="link-header" href="videogames.html">Videogames</a>
+      <a class="link-header" href="design.html">Design</a>
+      <a class="link-header" href="other.html">Others</a>
+      <a class="link-header" href="contact.html">Contact</a>
+    </div>
+
+  </div>
+  <script src="../script/script.js"></script>
+
+<div class="games-section">
+
+  <div class="carousel">
+
+    <button class="arrow left">❮</button>
+
+    <div class="carousel-window">
+      <div class="carousel-track">
+
+        <div class="game-card" data-game="game1">
+          <img src="../images/icons/dora.jpg">
+          <span class="title"></span>
+        </div>
+
+        <div class="game-card" data-game="game2">
+          <img src="../images/icons/bluey.jpg">
+          <span class="title">Juego 2</span>
+        </div>
+
+        <div class="game-card" data-game="game3">
+          <img src="../images/icons/nipa.jpg">
+          <span class="title">Juego 3</span>
+        </div>
+
+        <div class="game-card" data-game="game4">
+          <img src="../images/icons/vs.png">
+          <span class="title">Juego 4</span>
+        </div>
+
+        <div class="game-card" data-game="game5">
+          <img src="../images/icons/jam.png">
+          <span class="title">Juego 5</span>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="arrow right">❯</button>
+
+  </div>
+
+  <div class="game-info">
+
+    
+
+    <div class="middle">
+      
+       <h2 id="game-title"></h2>
+      <div id="tags"></div>
+      <ul id="features"></ul>
+      <div style="display: flex; justify-content: center; align-items: center;">
+          <div><a id="link" href="https://store.steampowered.com/app/3273550/Dora_Rescate_en_el_Bosque_Tropical/">Chec out here</a></div>
+      </div>
+      
+    </div>
+
+    <div class="right">
+      <h3>Contributions</h3>
+      <ul id="contributions"></ul>
+    </div>
+
+    <div class="left" style="padding: 0px;">
+      <iframe id="trailer"></iframe>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+const games = {
+
+game1:{
+title:"Dora: Rainforest Rescue",
+video:"https://www.youtube.com/embed/QS3oRC4XO6k?si=kv9d-yV5i-uIt3cb",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/3273550/Dora_Rescate_en_el_Bosque_Tropical/"},
+],
+tags:[
+{ text:"Producer", color:"#4CAF50" },
+{ text:"Level Designer", color:"#2196F3" }
+],
+features:["Studio: Artax Games","Genre: Adventures, Puzzles","Platforms: Steam, Switch, PS, Xbox","Project Length: 1 year 9 months"],
+contrib:["Coordinated development tasks and timelines to keep production on track.",
+"Designed and implemented game levels from concept to iteration.",
+"Maintained clear documentation for design decisions and production processes.",
+"Provided occasional UI support through wireframes, layout tweaks, and prototypes."]
+},
+
+game2:{
+title:"Bluey The Videogame Update 1",
+video:"https://www.youtube.com/embed/bz6pjkGopfI?si=kghSSwDUtoDU4aar",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/2078350/Bluey_El_Videojuego/"},
+],
+tags:[
+{ text:"QA", color:"#4CAF50" }
+],
+features:["Studio: Artax Games","Genre: Adventures, Puzzles","Platforms: Steam, Switch, PS, Xbox","Project Length: 9 months"],
+contrib:["Identified, documented, and tracked bugs using issue-tracking tools, providing clear reproduction steps, screenshots, and video evidence for developers.",
+"Tested game mechanics, controls, UI/UX, audio, and visual elements to maintain consistency, immersion, and player satisfaction."]
+},
+
+game3:{
+title:"Nipa: Demo",
+video:"https://www.youtube.com/embed/bz6pjkGopfI?si=kghSSwDUtoDU4aar",
+link:[
+  {name:"Check out on Steam", url:"https://store.steampowered.com/app/2984180/NIPA/"},
+],
+tags:[
+{ text:"Gameplay Designer", color:"#4CAF50" },
+{ text:"Level Designer", color:"#2196F3" }
+],
+features:["Studio: shy Ghost Studio","Genre: Action, Puzzles","Platforms: Steam","Project Length: 9 months"],
+contrib:["Identified, documented, and tracked bugs using issue-tracking tools, providing clear reproduction steps, screenshots, and video evidence for developers.",
+"Tested game mechanics, controls, UI/UX, audio, and visual elements to maintain consistency, immersion, and player satisfaction."]
+},
+
+game4:{
+title:"Vertical Slide",
+video:"https://www.youtube.com/embed/bz6pjkGopfI?si=kghSSwDUtoDU4aar",
+link:[
+  {name:"Check out on Itch.io", url:"https://finitto.itch.io/vertical-slide"},
+],
+tags:[
+{ text:"Gameplay Designer", color:"#4CAF50" },
+{ text:"Artist", color:"#2196F3" }
+],
+features:["Studio: Magdaleno Games","Genre: Adventures, Cards","Platforms: PC, Web","Project Length: 9 months"],
+contrib:["Identified, documented, and tracked bugs using issue-tracking tools, providing clear reproduction steps, screenshots, and video evidence for developers.",
+"Tested game mechanics, controls, UI/UX, audio, and visual elements to maintain consistency, immersion, and player satisfaction."]
+},
+
+game5:{
+title:"Game Jams!",
+video:"https://www.youtube.com/embed/bz6pjkGopfI?si=kghSSwDUtoDU4aar",
+link:[
+  {name:"Check out on Itch.io", url:"https://merlu.itch.io/"},
+],
+tags:[
+{ text:"Designer", color:"#4CAF50" },
+{ text:"Artist", color:"#2196F3" },
+{ text:"Programmer", color:"#4CAF50" },
+{ text:"Counselor", color:"#2196F3" },
+{ text:"Firefighter", color:"#4CAF50" },
+{ text:"Whatever is needed", color:"#2196F3" }
+],
+features:["Studio: Me & Friends","Genre: Something crazy","Platforms: Itch.io","Project Length: 2 days"],
+contrib:["In a game jam everything is allowed so I have done a lot of stuff here.",
+"The best thing is that you can make ANYTHING and you have no restrictions (well only you have limited time as it usually is three days or a week).",
+"I think its better if you try it yourself. Go to my itch.io page and see the games that I have participated in!"]
+}
+
+
+
+}
+
+const track = document.querySelector(".carousel-track")
+const cards = Array.from(document.querySelectorAll(".game-card"))
+
+let current = 0
+
+function updateCarousel(){
+
+  const total = cards.length
+
+  const left = (current - 1 + total) % total
+  const center = current
+  const right = (current + 1) % total
+
+  cards.forEach(card=>{
+    card.classList.remove("left","center","right","hidden")
+  })
+
+  cards[left].classList.add("left")
+  cards[center].classList.add("center")
+  cards[right].classList.add("right")
+
+  cards.forEach((card,i)=>{
+    if(i !== left && i !== center && i !== right){
+      card.classList.add("hidden")
+    }
+  })
+
+  updateGameInfo(cards[center].dataset.game)
+}
+
+function moveRight(){
+  current = (current + 1) % cards.length
+  updateCarousel()
+}
+
+function moveLeft(){
+  current = (current - 1 + cards.length) % cards.length
+  updateCarousel()
+}
+
+document.querySelector(".right").onclick = moveRight
+document.querySelector(".left").onclick = moveLeft
+
+updateCarousel()
+
+function updateGameInfo(id){
+
+const game = games[id]
+
+document.getElementById("game-title").innerText = game.title
+document.getElementById("trailer").src = game.video
+
+const tags = document.getElementById("tags")
+tags.innerHTML=""
+
+game.tags.forEach(t=>{
+
+  const span = document.createElement("span")
+
+  span.innerText = t.text
+  span.style.backgroundColor = t.color
+
+  tags.appendChild(span)
+
+})
+
+const link = document.getElementById("link")
+link.innerHTML = ""
+
+game.link.forEach(l => {
+
+  const a = document.createElement("a")
+
+  a.href = l.url
+  a.innerText = l.name
+  a.target = "_blank"
+
+  link.appendChild(a)
+
+})
+
+const features = document.getElementById("features")
+features.innerHTML=""
+game.features.forEach(f=>{
+  const li=document.createElement("li")
+  li.innerText=f
+  features.appendChild(li)
+})
+
+const contrib = document.getElementById("contributions")
+contrib.innerHTML=""
+game.contrib.forEach(c=>{
+  const li=document.createElement("li")
+  li.innerText=c
+  contrib.appendChild(li)
+})
+
+}
+</script>
+
+  
+</body>
+</html>
