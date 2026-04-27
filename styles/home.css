@@ -1049,7 +1049,7 @@ grid-template-columns:1fr;
 
   width: 100%;
 
-  background-image: url("/images/backgrounds/FondoWhoAmI.png");
+  background-image: url("../images/backgrounds/FondoWhoAmI.png");
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat;
@@ -1268,7 +1268,7 @@ grid-template-columns:1fr;
   content: "";
   width: 28px;
   height: 28px;
-  background-image: url("/images/icons/Star_Icon.png");
+  background-image: url("../images/icons/Star_Icon.png");
   background-size: contain;
   background-repeat: no-repeat;
   display: inline-block; /* importante para que rote bien */
@@ -1399,7 +1399,7 @@ grid-template-columns:1fr;
   content: "";
   width: 14px;
   height: 14px;
-  background-image: url("/images/icons/AboutMeIcon.png");
+  background-image: url("../images/icons/AboutMeIcon.png");
   background-size: contain;
   background-repeat: no-repeat;
 
