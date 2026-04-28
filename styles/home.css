@@ -1,81 +1,4 @@
 
-:root {
-
---text-50: #111111;
---text-100: #111111;
---text-200: #111111;
---text-300: #111111;
---text-400: #111111;
---text-500: #111111;
---text-600: #111111;
---text-700: #111111;
---text-800: #111111;
---text-900: #111111;
---text-950: #111111;
-
---background-50: #fff8f1;
---background-100: #fce9d6;
---background-200: #fcca98;
---background-300: #ffb368;
---background-400: #fea246;
---background-500: #fe8104;
---background-600: #cb6702;
---background-700: #834100;
---background-800: #542a01;
---background-900: #2f1800;
---background-950: #1c0e00;
-
---primary-50: #e6ecff;
---primary-100: #cdd8fe;
---primary-200: #9ab1fe;
---primary-300: #688bfd;
---primary-400: #3564fd;
---primary-500: #033dfc;
---primary-600: #0231ca;
---primary-700: #022597;
---primary-800: #011865;
---primary-900: #010c32;
---primary-950: #000619;
-
---secondary-50: #fbe6ff;
---secondary-100: #f7cdfe;
---secondary-200: #ef9afe;
---secondary-300: #e768fd;
---secondary-400: #df35fd;
---secondary-500: #d703fc;
---secondary-600: #ac02ca;
---secondary-700: #810297;
---secondary-800: #560165;
---secondary-900: #2b0132;
---secondary-950: #150019;
-
---accent-50: #ffe6f9;
---accent-100: #ffccf2;
---accent-200: #fe9ae5;
---accent-300: #fe67d8;
---accent-400: #fe34cb;
---accent-500: #fe01bf;
---accent-600: #cb0198;
---accent-700: #980172;
---accent-800: #65014c;
---accent-900: #330026;
---accent-950: #190013;
-
-
---accent2-50: #fffde6;
---accent2-100: #fffecc;
---accent2-200: #fefe9a;
---accent2-300: #fefe67;
---accent2-400: #feed34;
---accent2-500: #fef601;
---accent2-600: #cbc801;
---accent2-700: #909801;
---accent2-800: #655b01;
---accent2-900: #333100;
---accent2-950: #191900;
-
-
-}
 
 
 
@@ -465,6 +388,7 @@ animation-delay:4.3s,2s;
   width: 66%;
   display: flex;
   gap: 20px;
+  background-color: #ffc3d6;
 }
 
 
@@ -488,6 +412,7 @@ animation-delay:4.3s,2s;
   flex-direction: column;
   gap:30px;
   align-items: center;
+  
 }
 
 
@@ -527,7 +452,7 @@ animation-delay:4.3s,2s;
   color: #111111;
   font-family: "Bricolage Grotesque", sans-serif;
   
-  background-color: #ffc3d6;
+ 
   padding: 0px;
   max-width: 400px;
   border-top-right-radius:12px;
@@ -1607,3 +1532,269 @@ grid-template-columns:1fr;
 
 
 
+@media (max-width: 768px) {
+  .videogames-section-div {
+  margin-left:50px;
+  
+}
+.sub-videogames-section-div {
+  margin-left:50px;
+  
+  
+}
+}
+
+/* ========================================
+   RESPONSIVE BASE (TABLET)
+======================================== */
+
+@media (max-width: 1024px) {
+
+  .hero {
+    height: auto;
+    padding: 80px 20px;
+  }
+
+  .who-title {
+    font-size: 90px;
+  }
+
+  .visual-intro-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .visual-intro-img {
+    width: 90%;
+  }
+
+  .about-container {
+    flex-direction: column;
+    padding-left: 30px;
+  }
+
+  .about-text {
+    min-width: auto;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+
+  .divC-tools {
+    width: 100%;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-container {
+    padding: 60px 40px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+  /* INTRO HERO */
+  .intro-home {
+    height: auto;
+    padding-bottom: 80px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 60px 10px;
+  }
+
+  .who-title {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .letter {
+    font-size: inherit;
+  }
+
+  /* INTRO TEXT */
+  .text-intro-div {
+    height: auto;
+    font-size: 14px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  /* IMAGE SECTION */
+  .visual-intro-img {
+    width: 100%;
+  }
+
+  .visual-intro-div {
+    flex-direction: column;
+  }
+
+  /* ABOUT SECTION */
+  .about-person {
+    padding: 40px 5%;
+  }
+
+  .about-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .about-text {
+    min-width: auto;
+    text-align: center;
+    
+  }
+  .about-traits{
+    margin-top:15px;
+  }
+
+  .about-title h2 {
+    font-size: 28px;
+  }
+
+  .about-image {
+    max-width: 100%;
+  }
+
+  .divC-tools {
+    width: 100%;
+  }
+
+  .divC-tools {
+    flex-direction: column;
+    
+  }
+
+  .column-tools {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin-top:15px;
+  }
+
+  /* 🔥 CLAVE: convertimos track a horizontal REAL */
+  .track-tools {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+
+    width: max-content;
+
+    transform: translateX(0);
+    will-change: transform;
+
+    /* ❌ nada de scroll manual */
+    overflow: hidden;
+  }
+
+  .track-tools img {
+    width: 60px;
+    height: 60px;
+    flex: 0 0 auto;
+  }
+
+  /* ocultar scrollbar */
+  .track-tools::-webkit-scrollbar {
+    display: none;
+  }
+
+  .track-tools {
+    scrollbar-width: none;
+  }
+
+  
+
+
+  
+
+  /* EXPERIENCE */
+  .uppercontainerExperience {
+    padding: 40px 20px;
+  }
+
+  .experience-button {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 20px;
+  }
+
+  /* CV GRID */
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* PROJECTS */
+  .projects-container {
+    padding: 40px 20px;
+  }
+
+  .projects-title h2 {
+    font-size: 28px;
+  }
+
+  .projects-links {
+    gap: 20px;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* CONTACT */
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-right h2 {
+    text-align: center;
+  }
+
+  /* VIDEOGAMES TITLES */
+  .videogames-section-div,
+  .sub-videogames-section-div {
+    margin-left: 20px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+
+  .who-title {
+    font-size: 36px;
+  }
+
+  .text-intro-div {
+    font-size: 13px;
+  }
+
+  .lista span {
+    font-size: 12px;
+    padding: 0 25px;
+  }
+
+  .about-title h2 {
+    font-size: 24px;
+  }
+
+  .project-card {
+    padding: 16px;
+  }
+
+  .projects-title h2 {
+    font-size: 24px;
+  }
+}

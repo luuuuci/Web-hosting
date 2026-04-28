@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Home</title>
+  <title>Lucia Lopez Portal</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,8 @@
 
 <script src="script/script.js"></script>
   <script src="script/scriptbutton.js"></script>
+
+  <link rel="icon" type="image/png" href="images/icons/Star_Icon.png">
 
 </head>
 <body>
@@ -208,9 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
     <div class="about-tools">
- <div class="about-title-tools">
-        <h3>Tools</h3>
-      </div>
+ 
      <!-- DERECHA -->
     <div class="div-tools">
 
@@ -240,72 +240,103 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   <script>
-   const columnsTools = document.querySelectorAll(".column-tools");
+  const columnsTools = document.querySelectorAll(".column-tools");
 
+const isMobile = window.matchMedia("(max-width: 768px)");
 
 columnsTools.forEach((col) => {
   const track = col.querySelector(".track-tools");
 
-
-  // 🔁 DUPLICAMOS 3 VECES (clave para eliminar salto)
+  // duplicamos contenido para loop infinito en ambos modos
   track.innerHTML = track.innerHTML + track.innerHTML + track.innerHTML;
 
+  /* =========================
+     DESKTOP (VERTICAL LOOP)
+  ========================= */
 
-  let y = -track.scrollHeight / 3; // empezamos en el bloque central
+  let y = -track.scrollHeight / 3;
   let isHover = false;
-
 
   const direction = col.dataset.dir === "up-tools" ? -1 : 1;
   const speed = 0.4;
 
-
   const totalHeight = () => track.scrollHeight / 3;
 
-
   col.addEventListener("mouseenter", () => {
-    isHover = true;
-    col.classList.add("active");
+    if (!isMobile.matches) {
+      isHover = true;
+      col.classList.add("active");
+    }
   });
-
 
   col.addEventListener("mouseleave", () => {
-    isHover = false;
-    col.classList.remove("active");
+    if (!isMobile.matches) {
+      isHover = false;
+      col.classList.remove("active");
+    }
   });
 
-
   col.addEventListener("wheel", (e) => {
-    if (isHover) {
+    if (!isMobile.matches && isHover) {
       e.preventDefault();
       y += e.deltaY * 0.5;
     }
   });
 
+  /* =========================
+     MOBILE (HORIZONTAL TICKER)
+  ========================= */
+
+  let x = 0;
+  const mobileSpeed = 0.6;
+  let width = 0;
+
+  function updateWidth() {
+    width = track.scrollWidth / 3;
+  }
+
+  isMobile.addEventListener("change", updateWidth);
+  window.addEventListener("resize", updateWidth);
+  updateWidth();
+
+  /* =========================
+     LOOP ANIMATION
+  ========================= */
 
   function update() {
     const h = totalHeight();
 
+    if (isMobile.matches) {
 
-    // auto scroll
-    if (!isHover) {
-      y += speed * direction;
+      // 👉 MOBILE: horizontal ticker infinito
+      x -= mobileSpeed;
+
+      if (Math.abs(x) >= width) {
+        x = 0;
+      }
+
+      track.style.transform = `translateX(${x}px)`;
+
+    } else {
+
+      // 👉 DESKTOP: vertical scroll infinito
+      if (!isHover) {
+        y += speed * direction;
+      }
+
+      if (y <= -2 * h) y += h;
+      if (y >= -h) y -= h;
+
+      track.style.transform = `translateY(${y}px)`;
     }
-
-
-    // 🔥 NORMALIZACIÓN INVISIBLE (NO SALTO)
-    if (y <= -2 * h) y += h;
-    if (y >= -h) y -= h;
-
-
-    track.style.transform = `translateY(${y}px)`;
-
 
     requestAnimationFrame(update);
   }
 
-
   update();
 });
+
+
 </script>
 
 </section>
@@ -870,12 +901,16 @@ contrib2:["I think its better if you try it yourself. Go to my itch.io page and 
 };
 
 /* =========================
-CAROUSEL LOGIC
+CAROUSEL STATE
 ========================= */
 
 const cards = Array.from(document.querySelectorAll(".game-card"));
 let current = 0;
 let isTransitioning = false;
+
+/* =========================
+UPDATE CAROUSEL
+========================= */
 
 function updateCarousel() {
   const total = cards.length;
@@ -901,18 +936,28 @@ function updateCarousel() {
   updateGameInfo(cards[center].dataset.game);
 }
 
+/* =========================
+NAVIGATION
+========================= */
+
 function moveDown() {
+  if (isTransitioning) return;
   current = (current + 1) % cards.length;
   updateCarousel();
 }
 
 function moveUp() {
+  if (isTransitioning) return;
   current = (current - 1 + cards.length) % cards.length;
   updateCarousel();
 }
 
-document.querySelector(".arrow.down").onclick = moveDown;
-document.querySelector(".arrow.up").onclick = moveUp;
+/* =========================
+BUTTONS
+========================= */
+
+document.querySelector(".arrow.down").addEventListener("click", moveDown);
+document.querySelector(".arrow.up").addEventListener("click", moveUp);
 
 /* =========================
 UPDATE INFO
@@ -925,10 +970,10 @@ function updateGameInfo(id) {
   const game = games[id];
 
   if (!game) {
-  console.error("Game not found:", id);
-  isTransitioning = false;
-  return;
-}
+    console.error("Game not found:", id);
+    isTransitioning = false;
+    return;
+  }
 
   const animatedBlocks = document.querySelectorAll(".anim");
   animatedBlocks.forEach(el => el.classList.add("hide"));
@@ -938,10 +983,12 @@ function updateGameInfo(id) {
 
     const trailer = document.getElementById("trailer");
     trailer.src = "about:blank";
+
     setTimeout(() => {
       trailer.src = game.video;
     }, 80);
 
+    /* FEATURES */
     const features = document.getElementById("features");
     features.innerHTML = "";
     game.features.forEach(item => {
@@ -950,6 +997,7 @@ function updateGameInfo(id) {
       features.appendChild(li);
     });
 
+    /* TAGS */
     const tags = document.getElementById("tags");
     tags.innerHTML = "";
     game.tags.forEach(tag => {
@@ -959,6 +1007,7 @@ function updateGameInfo(id) {
       tags.appendChild(span);
     });
 
+    /* CONTRIBUTIONS */
     const contributions = document.getElementById("contributions");
     contributions.innerHTML = "";
     game.contrib.forEach(item => {
@@ -975,9 +1024,9 @@ function updateGameInfo(id) {
       contributions2.appendChild(li);
     });
 
+    /* LINK */
     const link = document.getElementById("link");
     link.innerHTML = "";
-
     game.link.forEach(item => {
       const a = document.createElement("a");
       a.href = item.url;
@@ -986,6 +1035,7 @@ function updateGameInfo(id) {
       link.appendChild(a);
     });
 
+    /* ANIMATION RESET */
     requestAnimationFrame(() => {
       animatedBlocks.forEach(el => el.classList.remove("hide"));
 
@@ -996,6 +1046,54 @@ function updateGameInfo(id) {
 
   }, 220);
 }
+
+/* =========================
+SWIPE SUPPORT (MOBILE + DESKTOP)
+========================= */
+
+const carouselWindow = document.querySelector(".carousel-window");
+
+/* TOUCH */
+let startY = 0;
+
+carouselWindow.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+carouselWindow.addEventListener("touchend", e => {
+  let endY = e.changedTouches[0].clientY;
+  let diff = startY - endY;
+
+  if (Math.abs(diff) > 40) {
+    if (diff > 0) moveDown();
+    else moveUp();
+  }
+});
+
+/* MOUSE DRAG */
+let isDown = false;
+let startMouseY = 0;
+
+carouselWindow.addEventListener("mousedown", e => {
+  isDown = true;
+  startMouseY = e.clientY;
+});
+
+window.addEventListener("mouseup", e => {
+  if (!isDown) return;
+  isDown = false;
+
+  let diff = startMouseY - e.clientY;
+
+  if (Math.abs(diff) > 40) {
+    if (diff > 0) moveDown();
+    else moveUp();
+  }
+});
+
+/* =========================
+INIT
+========================= */
 
 updateCarousel();
 
@@ -1015,12 +1113,17 @@ updateCarousel();
   
 </section>
 
+
+
 <section class="section-project">
+
+  <h2 class="project-title">Ecological market</h2>
+
+
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Ecological market</h2>
     <ul>
       <li><span class="negrita">Date:</span> January 2021 - March 2021</li>
       <li><span class="negrita">Tools:</span> Figma, Live Studio (HTML, CSS, JS)</li>
@@ -1055,11 +1158,12 @@ updateCarousel();
 
 
 <section class="section-project">
+  <h2 class="project-title">Portfolio website prototipe</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Portfolio website prototipe</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> April 2021</li>
       <li><span class="negrita">Tools:</span> Adobe XD, Live Studio (HTML, CSS, JS)</li>
@@ -1104,11 +1208,12 @@ updateCarousel();
 
 
 <section class="section-project">
+   <h2 class="project-title">Oddcomes Studio</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Oddcomes Studio</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> April 2025</li>
       <li><span class="negrita">Tools:</span> Adobe Illustrator</li>
@@ -1135,11 +1240,12 @@ updateCarousel();
 </section>
 
 <section class="section-project">
+  <h2 class="project-title">Tokio records bar</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Tokio records bar</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> October 2022</li>
       <li><span class="negrita">Tools:</span> Adobe Illustrator </li>
@@ -1190,11 +1296,12 @@ updateCarousel();
 </section>
 
 <section class="section-project">
+  <h2 class="project-title">Gastroiberia intro cutscene</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Gastroiberia intro cutscene</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> February 2023- April 2023</li>
       <li><span class="negrita">Tools:</span> Aseprite, Adobe Premiere</li>
@@ -1216,11 +1323,12 @@ updateCarousel();
 </section>
 
 <section class="section-project">
+  <h2 class="project-title">The sea is not a game</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>The sea is not a game </h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> November 2021 - March 2022</li>
       <li><span class="negrita">Tools:</span> Adobe Animate</li>
@@ -1243,11 +1351,12 @@ updateCarousel();
 
 
 <section class="section-project">
+  <h2 class="project-title">The fly, Aesop</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>The fly, Aesop</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> October 2023 - February 2024</li>
       <li><span class="negrita">Tools:</span> Adobe Animate</li>
@@ -1280,15 +1389,16 @@ updateCarousel();
 </section>
 
 <section class="section-project">
+  <h2 class="project-title">Book covers</h2>
   <div class="container-project">
 
   <!-- LEFT -->
   <div class="left-project">
-    <h2>Book covers</h2>
+    
     <ul>
       <li><span class="negrita">Date:</span> April 2025</li>
       <li><span class="negrita">Tools:</span> Adobe Illustrator</li>
-      <li><span class="negrita">Description:</span> <br><br>Identity mark for a leading studio in the development of independent video games in Spain, known for being sustainable and transparent, and for creating video games for a loyal, diverse, and new audience.</li>
+      <li><span class="negrita">Description:</span> <br><br>A selection of book cover designs showcasing my approach to visual storytelling, typography, and composition across different genres.</li>
     </ul>
   </div>
 
@@ -1679,5 +1789,27 @@ columns.forEach((col) => {
 
 
   </div>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const titles = document.querySelectorAll(".project-title");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  titles.forEach(title => {
+    observer.observe(title);
+  });
+
+});
+</script>
+
 </body>
 </html>

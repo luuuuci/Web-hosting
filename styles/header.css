@@ -64,3 +64,51 @@ border-bottom-width:1px;
   color: #ff5d90;
   border-bottom: 2px solid #ff5d90;
 }
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 60px;
+    padding: 0 10px;
+  }
+
+  .left-section {
+    margin-left: 10px;
+    flex: 1;
+  }
+
+  .right-section {
+    margin-right: 10px;
+    flex: 2;
+
+    justify-content: flex-end;
+    gap: 14px;
+
+    /* importante para evitar overflow raro */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .right-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .link-header {
+    font-size: 13px;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+
+  .home-image {
+    width: 90px;
+    margin-top: 0;
+  }
+
+  .link-header.active {
+    border-bottom-width: 1px;
+  }
+
+  .nav-indicator {
+    height: 1.5px;
+  }
+}
